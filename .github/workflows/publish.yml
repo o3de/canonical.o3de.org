@@ -17,11 +17,17 @@ jobs:
     environment: ${{ github.ref_name }} # Check environment against branch
 
     steps:
+      - name: Install dependancies
+        run: sudo apt-get install -y git-restore-mtime
+        
       # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      
+      - name: Restore mtime
+        run: git restore-mtime
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
