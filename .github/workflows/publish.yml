@@ -11,8 +11,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }} # Check environment against branch
 
     steps:
       # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
