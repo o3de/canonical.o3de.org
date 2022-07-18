@@ -1,0 +1,36 @@
+name: Publish to S3
+
+on:
+  # Triggers the workflow on push events but only for the branches below
+  push:
+    branches: [ "main", "development" ]
+    paths:
+      - src/**
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE, so the job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+           aws-access-key-id    :  ${{ secrets.AWS_CREDS_ACCESS_KEY }}
+           aws-secret-access-key:  ${{ secrets.AWS_CREDS_SECRET_KEY }}
+           aws-region           :  ${{ secrets.AWS_CREDS_REGION_NAME }}
+
+      # Syncs the src location to the S3 bucket
+      - name: Sync to S3
+        run: |
+           aws s3 sync src/ s3://${{ secrets.AWS_CONTENT_S3_BUCKET }}
+
+      # Invalidates the cloudfront cache
+      - name: Invalidate Cloudfront
+        run: |
+           aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CONTENT_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"

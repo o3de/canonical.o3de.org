@@ -1,0 +1,18 @@
+{
+    "repo_name":"canonical.o3de.org",
+    "origin": "Canonical O3DE Repos",
+    "origin_uri": "https://canonical.o3de.org",
+    "summary": "The o3de engines canonical repos",
+    "additional_info": "Get more information about this repo at http://o3de.org/documentation/canonical-repos.html",
+    "last_updated": "2022-07-05 00:00:00",
+    "gems": [
+        "https://raw.githubusercontent.com/o3de/o3de-extras/main/Gems/XR",
+        "https://raw.githubusercontent.com/o3de/o3de-extras/main/Gems/OpenXRVk"
+    ],
+    "projects": [
+    ],
+    "templates": [
+    ],
+    "repos": [
+    ]
+}
