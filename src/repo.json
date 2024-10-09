@@ -116,8 +116,8 @@
                         "ROS2>=3.1.0"
                     ],
                     "compatible_engines": [
-                        "o3de-sdk>=4.1.0",
-                        "o3de>=4.1.0"
+                        "o3de-sdk>=2.3.0",
+                        "o3de>=2.3.0"
                     ],
                     "download_source_uri": "https://github.com/o3de/o3de-extras/releases/download/2.0/proteusrobot-1.1.0-gem.zip",
                     "sha256": "dec32d93221e2514b59e1ac056b74c771dc4109b4599b5cf290f27a3f2486615"
