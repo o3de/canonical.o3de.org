@@ -4,7 +4,7 @@
     "repo_uri": "https://canonical.o3de.org",
     "summary": "The Open 3D Engine's canonical repos.",
     "additional_info": "Get more information about this repo at https://github.com/o3de/canonical.o3de.org",
-    "last_updated": "2024-10-08",
+    "last_updated": "2024-11-04",
     "$schemaVersion": "1.0.0",
     "gems_data": [
         {
