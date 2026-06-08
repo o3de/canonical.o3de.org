@@ -1,0 +1,73 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$id": "./o3de-workspace-2.0.0.json",
+    "title": "O3DE Workspace Schema 2.0.0",
+    "description": "Schema 2.0.0 for O3DE workspace. A workspace is a local build artifact that links source objects into a unified directory tree with symlinks.",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "$ref": "./o3de-patterns-2.0.0.json#/definitions/$schema"
+        },
+        "$schemaVersion": {
+            "$ref": "./o3de-patterns-2.0.0.json#/definitions/$schemaVersion"
+        },
+        "workspace": {
+            "description": "The workspace header.",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Human-readable workspace name."
+                },
+                "version": {
+                    "$ref": "./o3de-patterns-2.0.0.json#/definitions/version"
+                },
+                "display_name": {
+                    "type": "string",
+                    "description": "Display name for UI."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief description of this workspace."
+                }
+            },
+            "required": ["name"]
+        },
+        "created": {
+            "type": "string",
+            "description": "ISO 8601 timestamp when the workspace was created.",
+            "format": "date-time"
+        },
+        "root_object": {
+            "description": "The root O3DE object path used to create this workspace.",
+            "type": "string"
+        },
+        "root_type": {
+            "description": "The object type of the root (engine, project, gem, etc.).",
+            "type": "string",
+            "enum": ["engine", "project", "gem", "template", "repo", "overlay"]
+        },
+        "sources": {
+            "description": "Full paths to all source objects resolved into this workspace.",
+            "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPaths"
+        },
+        "overlays": {
+            "description": "Full paths to overlay objects applied to this workspace.",
+            "$ref": "./o3de-patterns-2.0.0.json#/definitions/fullPaths"
+        },
+        "file_owners": {
+            "description": "Map of relative POSIX file paths in the workspace to the object name that owns that file. When an overlay replaces a file, ownership transfers to the overlay.",
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "$schema",
+        "$schemaVersion",
+        "workspace",
+        "created",
+        "sources"
+    ]
+}
